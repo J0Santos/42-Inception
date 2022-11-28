@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx_cont
+    build: ./requirements/nginx
+    restart: on-failure
+    ports:
+      - 443:443
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress_vol:/var/www/html
+    networks:
+      - inception
+
+  mariadb:
+    container_name: mariadb_cont 
+    build: ./requirements/mariadb
+    restart: on-failure
+    volumes:
+      - mariadb_vol:/var/lib/mysql
+    networks:
+      - inception
+
+  wordpress:
+    container_name: wordpress_cont
+    build: ./requirements/wordpress/
+    restart: on-failure
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress_vol:/var/www/html
+    networks:
+      - inception
+networks:
+  inception:
+    driver: bridge
+
+volumes:
+  mariadb_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/josantos/data/mariadb_vol
+      o: bind
+  wordpress_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/josantos/data/wordpress_vol
+      o: bind
