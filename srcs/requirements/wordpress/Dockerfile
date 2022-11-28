@@ -18,8 +18,8 @@ COPY ./conf/www.conf /var/www/html
 RUN mkdir /run/php
 
 #Script
-RUN chmod +x ./tools/create_wp.sh
 COPY ./tools/create_wp.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/create_wp.sh
 ENTRYPOINT [ "/usr/local/bin/create_wp.sh" ]
 
 
