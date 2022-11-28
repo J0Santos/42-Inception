@@ -19,7 +19,7 @@ RUN mkdir /run/php
 
 #Script
 COPY ./tools/create_wp.sh /usr/local/bin/
-ENTRYPOINT [ "create_wp.sh" ]
+ENTRYPOINT [ "/usr/local/bin/create_wp.sh" ]
 
 
 EXPOSE 9000
