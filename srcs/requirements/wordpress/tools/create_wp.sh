@@ -11,7 +11,7 @@ else
 
 	#update config file
 	rm -rf /etc/php/7.3/fpm/pool.d/www.conf
-	mv ./conf/www.conf /etc/php/7.3/fpm/pool.d/
+	mv ../conf/www.conf /etc/php/7.3/fpm/pool.d/
 
 	#Import env vars into config file
 	cd /var/www/html/wordpress
