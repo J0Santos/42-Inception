@@ -13,6 +13,7 @@ RUN apt update && apt -y install wget \
 WORKDIR /var/www/html/
 #Copy tools to download wordpress
 COPY ./conf/www.conf /tmp/
+COPY ./conf/wp-config.php /tmp/
 
 #Create folder to enable php start
 RUN mkdir /run/php
