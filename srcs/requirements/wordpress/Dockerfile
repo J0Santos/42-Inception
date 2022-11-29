@@ -12,7 +12,7 @@ RUN apt update && apt -y install wget \
 
 WORKDIR /var/www/html/
 #Copy tools to download wordpress
-COPY ./conf/www.conf /var/www/html
+COPY ./conf/www.conf /tmp/
 
 #Create folder to enable php start
 RUN mkdir /run/php
@@ -25,4 +25,4 @@ ENTRYPOINT [ "/usr/local/bin/create_wp.sh" ]
 
 EXPOSE 9000
 
-CMD [ "systemctl", "start", "php7.3-fpm"]
+CMD [ "/usr/sbin/php-fmp7.3", "-F" ]
