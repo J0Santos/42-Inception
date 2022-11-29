@@ -19,8 +19,8 @@ RUN openssl req -x509 \
 RUN mkdir -p /var/www/wordpress
 
 #Adding wordpress server config file in sites-available
-COPY ./tools/wordpress /etc/nginx/sites-available/
-RUN ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+COPY ./conf/nginx.conf /etc/nginx/sites-available/
+RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
 #Adding config to nginx
 COPY conf/nginx.conf /etc/nginx/conf.d
