@@ -2,9 +2,9 @@
 FROM debian:10.12
 
 #Update OS
-RUN apt update && apt -y upgrade \
-				&& apt install nginx -y \
-				&& apt install openssl -y
+RUN apt update \
+		&& apt install nginx -y \
+		&& apt install openssl -y
 		
 #Generate self certificate
 RUN openssl req -x509 \
