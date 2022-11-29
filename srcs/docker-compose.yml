@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx:
-    container_name: nginx_cont
+    container_name: nginx
     build: ./requirements/nginx
     restart: on-failure
     ports:
@@ -10,12 +10,12 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - wordpress_vol:/var/www/html
+      - wordpress_vol:/var/www/wordpress
     networks:
       - inception
 
   mariadb:
-    container_name: mariadb_cont 
+    container_name: mariadb 
     build: ./requirements/mariadb
     restart: on-failure
     volumes:
@@ -24,13 +24,13 @@ services:
       - inception
 
   wordpress:
-    container_name: wordpress_cont
+    container_name: wordpress
     build: ./requirements/wordpress/
     restart: on-failure
     depends_on:
       - mariadb
     volumes:
-      - wordpress_vol:/var/www/html
+      - wordpress_vol:/var/www/wordpress
     networks:
       - inception
 networks:
