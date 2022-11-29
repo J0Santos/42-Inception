@@ -25,4 +25,4 @@ ENTRYPOINT [ "/usr/local/bin/create_wp.sh" ]
 
 EXPOSE 9000
 
-CMD [ "service php7.3-fpm", "restart"]
+CMD [ "systemctl", "start", "php7.3-fpm"]
