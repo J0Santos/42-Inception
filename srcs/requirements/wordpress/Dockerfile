@@ -25,4 +25,4 @@ ENTRYPOINT [ "/usr/local/bin/create_wp.sh" ]
 
 EXPOSE 9000
 
-CMD [ "/usr/sbin/php-fmp7.3", "-F" ]
+CMD [ "/usr/local/bin/create_wp.sh" ]

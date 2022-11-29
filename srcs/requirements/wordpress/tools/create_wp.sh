@@ -11,7 +11,7 @@ else
 
 	#update config file
 	rm -rf /etc/php/7.3/fpm/pool.d/www.conf
-	mv ./conf/www.conf /etc/php/7.3/fpm/pool.d/
+	mv /tmp/www.conf /etc/php/7.3/fpm/pool.d/
 
 	#Import env vars into config file
 	cd /var/www/html/wordpress
@@ -22,8 +22,8 @@ else
 	mv wp-config-sample.php wp-config.php
 fi
 
-service php7.3-fpm start;
+service php7.3-fpm start
 
-service php7.3-fpm stop;
+service php7.3-fpm stop
 
-php-fpm7.3 -F -R;
+php-fpm7.3 -F -R
