@@ -10,7 +10,9 @@ RUN apt update && apt -y install wget \
 					php-cli \
 					php-mbstring
 
-WORKDIR /var/www/html/
+RUN mkdir -p /var/www/wordpress
+WORKDIR /var/www/wordpress/
+
 #Copy tools to download wordpress
 COPY ./conf/www.conf /tmp/
 COPY ./conf/wp-config.php /tmp/
