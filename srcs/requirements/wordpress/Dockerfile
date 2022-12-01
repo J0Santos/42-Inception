@@ -34,9 +34,4 @@ COPY ./conf/www.conf /tmp/
 COPY ./conf/wp-config.php /tmp/
 COPY ./tools/create_wp.sh /tmp/
 
-#Copy tools to download wordpress
-COPY ./conf/www.conf /tmp/
-COPY ./conf/wp-config.php /tmp/
-COPY ./tools/create_wp.sh /tmp/
-
 CMD [ "bash", "/tmp/create_wp.sh" ]
