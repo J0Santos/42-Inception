@@ -10,11 +10,13 @@ if [ -f "/var/lib/mysql/${DB_NAME}" ]; then
 else
 	# creating database
 	mariadb -u root -e "CREATE DATABASE IF NOT EXISTS ${DB_NAME};"
-	# creating user MYSQL_USER %
+	# creating user DB_USER %
 	mariadb -u root -e "CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';"
-	mariadb -u root -e "FLUSH PRIVILEGES;"
-	# creating user MYSQL_USER local
 	mariadb -u root -e "GRANT ALL ON ${DB_NAME}.* TO '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+	mariadb -u root -e "FLUSH PRIVILEGES;"
+	# creating user DB_USER local
+	mariadb -u root -e "CREATE USER IF NOT EXISTS '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
+	mariadb -u root -e "GRANT ALL ON ${DB_NAME}.* TO '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
 	mariadb -u root -e "FLUSH PRIVILEGES;"
 	echo "${DB_NAME} created database"
 fi
