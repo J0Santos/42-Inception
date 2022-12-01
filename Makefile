@@ -14,7 +14,7 @@ down:
 	@printf "Stopping configuration for ${name}..\n"
 	@docker compose -f ./srcs/docker-compose.yml down
 
-re:
+re: fclean
 	@printf "Rebuilding configuration for ${name}..\n"
 	@docker compose -f ./srcs/docker-compose.yml up -d --build
 

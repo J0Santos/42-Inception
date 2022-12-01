@@ -9,9 +9,8 @@ RUN apt update && apt install -y mariadb-server mariadb-client \
 
 EXPOSE 3306
 
-COPY ./tools/create_db.sh /usr/local/bin/
-COPY ./conf/wordpress.sql /usr/local/bin/
-RUN chmod +x /usr/local/bin/create_db.sh
-ENTRYPOINT [ "/usr/local/bin/create_db.sh" ]
+COPY ./tools/create_db.sh /tmp/
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/ 
+RUN chmod +x /tmp/create_db.sh
 
-CMD [ "mysqld", "--bind-address=0.0.0.0" ]
+CMD [ "bash", "/tmp/create_db.sh" ]
