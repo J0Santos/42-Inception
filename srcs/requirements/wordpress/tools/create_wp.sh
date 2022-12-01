@@ -7,7 +7,7 @@ sleep 10;
 
 	chmod 644 /var/www/wordpress/wp-config.php;
 	
-	wp core install --url="josantos.42.fr" --title="Inception" --admin_user="josantos" --admin_password="1234abc" --admin_email="josantos@42lisboa.com" --allow-root
+	wp core install --url="josantos.42.fr" --title="inception" --admin_name="josantos" --admin_password="1234abc" --admin_email="josantos@42lisboa.com" --allow-root
 	#Import env vars into config file
 	#cd /var/www/html/wordpress
 	#sed -i "s/username_here/$MYSQL_USER/g" wp-config-sample.php
@@ -15,6 +15,7 @@ sleep 10;
 	#sed -i "s/localhost/$MYSQL_HOSTNAME/g" wp-config-sample.php
 	#sed -i "s/database_name_here/$MYSQL_DATABASE/g" wp-config-sample.php
 	#mv wp-config-sample.php wp-config.php
+	wp user create "jose" "jose@student.42lisboa.com" --user_pass="1234" --allow-root
 
 service php7.3-fpm start;
 
