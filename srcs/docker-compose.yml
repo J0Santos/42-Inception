@@ -50,11 +50,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/jose/data/mariadb_vol
+      device: /home/josantos/data/mariadb_vol
       o: bind
   wordpress_vol:
     driver: local
     driver_opts:
       type: none
-      device: /home/jose/data/wordpress_vol
+      device: /home/josantos/data/wordpress_vol
       o: bind
