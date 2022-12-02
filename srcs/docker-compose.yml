@@ -3,6 +3,7 @@ version: '3'
 services:
   nginx:
     container_name: nginx
+    image: nginx
     build: ./requirements/nginx
     # restart: on-failure
     ports:
@@ -16,6 +17,7 @@ services:
 
   mariadb:
     container_name: mariadb 
+    image: mariadb
     build: ./requirements/mariadb
     # restart: on-failure
     volumes:
@@ -27,6 +29,7 @@ services:
 
   wordpress:
     container_name: wordpress
+    image: wordpress
     build: ./requirements/wordpress/
       # restart: on-failure
     depends_on:
