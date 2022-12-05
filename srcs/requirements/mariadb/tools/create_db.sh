@@ -18,6 +18,7 @@ else
 	mariadb -u root -e "CREATE USER IF NOT EXISTS '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
 	mariadb -u root -e "GRANT ALL ON ${DB_NAME}.* TO '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
 	mariadb -u root -e "FLUSH PRIVILEGES;"
+	mariadb -u root -p${DB_PASSWORD} -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
 	echo "${DB_NAME} created database"
 fi
 
@@ -33,6 +34,6 @@ fi
 # mysql -uroot -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /usr/local/bin/wordpress.sql
 # fi
 
-/etc/init.d/mysql stop
+mysqladmin -u root -p${DB_PASSWORD} shutdown;
 
 mysqld;
